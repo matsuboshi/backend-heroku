@@ -14,6 +14,10 @@ const connection = mysql.createConnection({
   database: 'heroku_f2a2bae17242c57',
 });
 
+server.get('/', (req, res) => {
+  res.json('Welcome! Routes: /products and /messages');
+});
+
 server.get('/products', (req, res) => {
   connection.query('SELECT * from produtos', (error, result) => {
     res.json(result ? result : error);
